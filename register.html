@@ -77,6 +77,11 @@
         input[type="button"]:hover {
             background-color: #ad0e8c;
         }
+        input[type="button"]:active {
+            background-color: #75055e;
+            border-radius: 7px;
+            padding: 10px 14px;
+        }
 
         
     </style>
@@ -121,7 +126,7 @@
                     <label for="age">Age:</label>
                         <select id="age" name="age">
                             <option value="">Select Age</option>
-                            <option value="1">1 - 5</option>
+                            <option value="1"> 5 </option>
                             <option value="2">5 - 10</option>
                             <option value="3">11 - 15</option>
                             <option value="4">16 - 20</option>
@@ -139,21 +144,22 @@
     
                     <label for="gender">Gender:</label>
                     <br>
-                    <input type="radio" name="gender" /> Male
-                    <input type="radio" name="gender" /> Female
-                    <input type="radio" name="gender" /> Others
+                    <input type="radio" name="gender" value="Male"/> Male
+                    <input type="radio" name="gender" value="Female"/> Female
+                    <input type="radio" name="gender" value="Others"/> Others
     
-                    <label for="role">Role:</label>
-                    <br>
-                    <input type="radio" name="role" /> Student
-                    <input type="radio" name="role" /> Teacher
-                    <input type="radio" name="role" /> Staff
+                    <label for="role">Role:</label> 
+                    <br> 
+                    <input type="radio" name="role" value="student" /> Student 
+                    <input type="radio" name="role" value="teacher" /> Teacher 
+                    <input type="radio" name="role" value="staff" /> Staff 
+
     
                     <label for="faculty">Faculty:</label>
                     <br>
-                    <input type="radio" name="faculty" /> Management
-                    <input type="radio" name="faculty" /> Science
-                    <input type="radio" name="faculty"/> A staff
+                    <input type="radio" name="faculty" value="Management"/> Management
+                    <input type="radio" name="faculty" value="Science"/> Science
+                    <input type="radio" name="faculty" value="Staff"/> Staff
     
                     <label for="phone">Phone:</label>
                     <br>
@@ -166,7 +172,7 @@
                         <option value="982">982</option>
                         <option value="986">986</option>
                     </select>
-                    <input type="phone" id="phone" name="phone" maxlength="10" placeholder="98470*****">
+                    <input type="phone" id="phone" name="phone" pattern="[0-9]{10}" maxlength="10" placeholder="98470*****">
     
                     <label for="address">Address:</label>
                     <input type="text" id="address" name="address" placeholder="Enter Your Address">
@@ -178,14 +184,17 @@
                     <textarea
                     style="resize: none;"
                     id="message" name="message" placeholder="Up to 100 words" maxlength="500" cols="10" rows="5"></textarea>
-    
+
+                    <p style="font-size: 15px; float: left; margin-right: 49%; color: #000;">&#9888; please check your form before submiting</p>
+
                     <br>
-                    <input type="button" value="Submit">
+                    <input type="button" id="submit-btn" value="Submit" >
                 </fieldset>
             </form>
         </div>
     
     </div>
+
     <footer style="position: absolute;">
         <div class="con1">
             <h2 id="contact-txt">Contacts</h2>
@@ -239,5 +248,81 @@
     
     </footer>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var submitBtn = document.querySelector('input[type="button"]');
+    
+            submitBtn.addEventListener("click", function() {
+                var firstname = document.getElementById("firstname").value;
+                var lastname = document.getElementById("lastname").value;
+                var age = document.getElementById("age").value;
+                var gender = document.querySelector('input[name="gender"]:checked').value;
+                var role = document.querySelector('input[name="role"]:checked').value;
+                var faculty = document.querySelector('input[name="faculty"]:checked').value;
+                var phoneCode = document.getElementById("phoneCode").value;
+                var phone = document.getElementById("phone").value;
+                var address = document.getElementById("address").value;
+                var email = document.getElementById("email").value;
+                var message = document.getElementById("message").value;
+    
+                console.log("Firstname:", firstname);
+                console.log("Lastname:", lastname);
+                console.log("Age:", age);
+                console.log("Gender:", gender);
+                console.log("Role:", role);
+                console.log("Faculty:", faculty);
+                console.log("Phone:", phoneCode + phone);
+                console.log("Address:", address);
+                console.log("Email:", email);
+                console.log("Message:", message);
+                alert("Submitted");
+            });
+        });
+    </script>
+
+    <?php
+        // Retrieve form data from POST request
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $age = $_POST['age'];
+        $gender = $_POST['gender'];
+        $role = $_POST['role'];
+        $faculty = $_POST['faculty'];
+        $phone = $_POST['phone'];
+        $address = $_POST['address'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        // Perform any necessary validation on the data
+
+        // Connect to MySQL database
+        $servername = "localhost";
+        $username = "username"; // Your MySQL username
+        $password = "password"; // Your MySQL password
+        $dbname = "database"; // Your MySQL database name
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Prepare SQL statement to insert data into database
+        $sql = "INSERT INTO contacts (firstname, lastname, age, gender, role, faculty, phone, address, email, message)
+        VALUES ('$firstname', '$lastname', '$age', '$gender', '$role', '$faculty', '$phone', '$address', '$email', '$message')";
+
+        // Execute SQL statement
+        if ($conn->query($sql) === TRUE) {
+        echo "New record created successfully";
+        } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+
+        // Close database connection
+        $conn->close();
+    ?>
+
+    
 </body>
 </html>
