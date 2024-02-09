@@ -1,9 +1,73 @@
 body {
     overflow-x: hidden;
-    background-color: #000;
+    background-color: #0b0808;
     max-width: fit-content;
+    margin: 0;
 
 }
+html{
+  padding: 0;
+}
+
+.faculty-dropdown {
+  position: relative;
+}
+
+.faculty-dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #050505; /* Dark Gray */
+  padding: 10px;
+  
+  border-radius: 10px 10px;
+  border: solid 2px white;
+}
+
+.faculty-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.faculty-dropdown .dropdown-content li {
+  margin-bottom: 5px;
+  
+}
+
+.faculty-dropdown .dropdown-content li:last-child {
+  margin-bottom: 0;
+}
+
+.more-dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      .more-dropdown .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #110f0f;
+          min-width: 160px;
+          z-index: 1;
+          border: #d1d1d1 solid 2px;
+          border-radius: 10px;
+          margin-top: 0px;
+      }
+
+      .more-dropdown .dropdown-content li {
+          padding: 10px 15px;
+          text-align: center;
+      }
+
+      .more-dropdown .dropdown-content li a {
+          color: #ffffff;
+          text-decoration: none;
+      }
+
+      .more-dropdown .dropdown-content li a:hover {
+          color: #00ffd5;
+      }
+
+
 
 .pageNo {
     display: inline-block;
@@ -18,13 +82,13 @@ a {
 }
 nav {
     background-color: #00000000;
-    overflow: hidden;
+   
     padding: 0px 0px 0px 0px;
     margin-top: 0;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     position: fixed;
-    width: 98%;
+    width: 89%;
     display: flex;
     justify-content: space-between;
     flex: 1fr 1fr;
@@ -112,7 +176,7 @@ nav {
   }
   .topDIV button:hover {
     background-color: #3db9b3;
-    color: rgb(66, 66, 66);
+    color: rgb(58, 46, 46);
   }
   .topDIV button:active {
     background-color:  #329b96;
@@ -120,8 +184,9 @@ nav {
   }
 
   .contain{
-    background-color: #5fc3d9;
+    background-color: #000000;
     padding: 40px 20px 40px 20px;
+    color: white;
   }
   .thumbnail{
     width: 400px;
@@ -142,28 +207,28 @@ nav {
     margin-top: 20px;
   }
   #contain1{
-    background-color: #c9c9ff;
+    background-color:  #1a1d1d;
   }
   #container1{
-    background-color: #323d3d;
+    background-color: #000000;
     color: aliceblue;
   }
   #container1 p{
     margin-bottom: 60px;
   }
   #contain2{
-    background-color: #1e1d1d;
+    background-color: #330b0b;
   }
   #container2{
-    background-color: #3db9b3;
-    color: #000;
+    background-color: #000000;
+    color: #ffffff;
   }
 
   #contain3{
-    background-color: #3db9b3b7;
+    background-color: #670505;
   }
   #container3{
-    background-color: #c0acff;
+    background-color: #503834;
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
@@ -193,8 +258,8 @@ nav {
   .element{
     margin: 20px;
     display: block;
-    background-color: rgb(255, 233, 144);
-    color: #000000;
+    background-color: rgb(13, 13, 13);
+    color: #ffffff;
     padding: 28px;
     width: 45%;
     border-radius: 20px;
@@ -202,7 +267,7 @@ nav {
   }
 
   .element ul{
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Times New Roman', Times, serif, sans-serif, arial;
   }
 
