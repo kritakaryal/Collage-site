@@ -66,3 +66,22 @@
             alert("Submitted");
         });
     });
+    // Detect when the element comes into view
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.querySelectorAll('.contain');
+    var windowHeight = window.innerHeight;
+    
+    function checkPosition() {
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var positionFromTop = element.getBoundingClientRect().top;
+            if (positionFromTop - windowHeight <= 0) {
+                element.classList.add('animate');
+            }
+        }
+    }
+    
+    // Run the checkPosition function on page load and scroll
+    window.addEventListener('load', checkPosition);
+    window.addEventListener('scroll', checkPosition);
+});
