@@ -96,7 +96,7 @@ nav {
   }
   
   .logo{
-    height: 50px;
+    height: 60px;
     margin-top: 20px;
     margin-left: 10px;
     display: inline-block;
@@ -113,10 +113,13 @@ nav {
     display: flex;
     justify-content: end;
     flex: 1fr 5px;
+ 
+    margin-right: -40px;
   }
   
   nav li {
     float: left;
+    margin-left: 0;
   }
   
   nav li a {
@@ -147,7 +150,7 @@ nav {
     background-color: #292929;
   }
   .bodyDIV {
-    background-image: url('https://i.ytimg.com/vi/x-MDfibRctM/maxresdefault.jpg');
+    background-image: url('https://cdn.dribbble.com/users/1081864/screenshots/3359526/education_800x600_newcolors.gif');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -225,7 +228,7 @@ nav {
   }
 
   #contain3{
-    background-color: #670505;
+    background-color: #300707;
   }
   #container3{
     background-color: #503834;
@@ -294,53 +297,63 @@ nav {
     margin-left: 15px;
   }
 
-footer{
-  width: 100%;
-  background-color: rgba(54, 54, 54, 0.411);
- 
-
-}
-footer div{
-  display: inline-block;
-  margin-top: 20px;
-  width: 48%;
-  height: 100%;
-  position: relative;
-  left: 10%;
-  color: white;
-}
-.con1{
-  margin-top: 0px;
-  margin-bottom: 30px;
-
-}
-footer div ul li a{
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 25px;
+  footer{
+    width: 100%;
+    background-color: rgba(20, 16, 16, 0.791);
+   
   
-}
-footer div ul li a p:hover {s
-  text-decoration: underline;
-  font-size: 24px;
+  }
+  footer div{
+    display: inline-block;
+    margin-top: 20px;
+    width: 40%;
+    height: 100%;
+    position: relative;
+    left: 15%;
+    color: white;
+  }
+  .con1{
+    margin-top: 0px;
+    margin-bottom: 30px;
+  
+  }
+  footer div ul li a{
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    
+  }
+  footer div ul li a p:hover {s
+    text-decoration: underline;
+    font-size: 24px;
+  }
+  
+  footer div ul li{
+    list-style-type: none;
+  }
+  footer div ul li p{
+    display: inline-block;
+    margin-bottom: 2px;
+  
+  }
+  footer div h2{
+    font-size: 30px;
+  }
+  footer div ul li img{
+    width: 30px;
+    margin-right: 10px;
+  }
+  .fimg{
+    width: 30px;
+    margin-right: 10px;
+  }
+  .contain {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: Slide up animation */
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-footer div ul li{
-  list-style-type: none;
-}
-footer div ul li p{
-  display: inline-block;
-  margin-bottom: 2px;
-
-}
-footer div h2{
-  font-size: 30px;
-}
-footer div ul li img{
-  width: 30px;
-  margin-right: 10px;
-}
-.fimg{
-  width: 30px;
-  margin-right: 10px;
+.contain.animate {
+    opacity: 1;
+    transform: translateY(0);
 }
