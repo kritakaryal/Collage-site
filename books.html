@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body style="background-color: #333333;">
+
+    <nav id="menuBar">
+            
+        <a href="home.html">
+            <img src="https://cdn.dribbble.com/users/2486875/screenshots/5534832/education.gif" class="logo">
+
+        </a>
+        
+       
+    </nav>
+    
+    <div class="contain">
+        <div class="container">
+            <h1 style="color: azure; letter-spacing: 2px;">Select a PDF:</h1>
+            <select id="pdfSelector">
+                <option value="">Select PDF</option>
+                <option value="https://www.fisica.net/mecanica-quantica/Griffiths%20-%20Introduction%20to%20quantum%20mechanics.pdf">Quantum Physics</option>
+                <option value="https://sites.bu.edu/manove-ec101/files/2019/04/UMinnMicroeconomics.pdf">Principle of Economics</option>
+                <option value="https://assets.openstax.org/oscms-prodcms/media/documents/PrinciplesofFinance-WEB.pdf">Principle of Finance</option>
+
+            </select>
+
+            <div id="wait"></div>
+            <div id="pdfViewer"></div>
+
+            <button id="downloadButton">Download Selected PDF</button>
+        </div>
+    </div>
+    
+    <style>
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+#pdfSelector {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#downloadButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#downloadButton:hover {
+    background-color: #45a049;
+}
+
+
+
+
+        select{
+            width: 200px;
+            height: 50px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: rgb(12, 20, 12);
+            color: white;
+        }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #pdfViewer {
+        margin-top: 20px;
+    }
+
+
+    iframe{
+        margin-left: -50vh;
+    }
+    a {
+    text-decoration: none;
+
+}
+nav {
+    background-color: #00000000;
+   
+    padding: 0px 0px 0px 0px;
+    margin-top: 0;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    position: fixed;
+    width: 89%;
+    display: flex;
+    justify-content: space-between;
+    flex: 1fr 1fr;
+    z-index: 20;
+  }
+  
+  .logo{
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  
+
+    </style>
+
+    <script>
+        
+
+        
+
+        //pdf viewer
+        const pdfSelector = document.getElementById('pdfSelector');
+        const pdfViewer = document.getElementById('pdfViewer');
+        const wait = document.getElementById('wait');
+
+        pdfSelector.addEventListener('change', function(){
+            const selectedPdff = pdfSelector.value;
+            if(selectedPdff){
+                wait.innerHTML = '<h3 style="color: azure; letter-spacing: 1px;">Pdf my take time to load. please stayby..</h3>';
+            }
+            else{
+                wait.innerHTML = '';
+            }
+
+            let count = 0;
+                const interval = setInterval(function() {
+                count++;
+                
+                if (count >= 7) {
+                    wait.innerHTML = '';
+                    clearInterval(interval); // Stop the interval when count reaches 10
+                }
+                }, 1000);
+        })
+
+        pdfSelector.addEventListener('change', function() {
+            const selectedPdf = pdfSelector.value;
+            if (selectedPdf) {
+                pdfViewer.innerHTML = `<iframe src="${selectedPdf}" width="1200vw" height="1000vh" style="border-radius: 20px; border: none;"></iframe>`;
+            } else {
+                pdfViewer.innerHTML = 'No Pdf Selected';
+            }
+        });
+
+
+//download button
+
+    document.getElementById('downloadButton').addEventListener('click', function() {
+    var selectedPdf = document.getElementById('pdfSelector').value;
+    var link = document.createElement('a');
+    link.href = selectedPdf;
+    link.download = selectedPdf.split('/').pop();
+    link.style.display = 'none'; // Hide the link
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    });
+
+
+    </script>
+    
+</body>
+</html>

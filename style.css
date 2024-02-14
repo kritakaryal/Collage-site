@@ -1,8 +1,14 @@
+*{
+  scroll-behavior: smooth;
+  
+}
+
 body {
     overflow-x: hidden;
     background-color: #0b0808;
     max-width: fit-content;
     margin: 0;
+    
 
 }
 html{
@@ -79,6 +85,7 @@ html{
 }
 a {
     text-decoration: none;
+
 }
 nav {
     background-color: #00000000;
@@ -131,17 +138,38 @@ nav {
     font-size: 16px;
     margin-right: 5px;
     text-transform: uppercase;
-    background-color: #333333;
+    background-color: #33333300;
+
     border-radius: 10px;
+    transition: all 0.8s ease;
+    text-underline-offset: 0.5rem;
+
+    border: solid 1px white;
   }
   
+  nav ul li ul li a:hover{
+    background-color: #111;
+    border-radius: 10px;
+    text-decoration: underline;
+    
+    text-underline-offset: 0.5rem;
+  }
+
+  .more-dropdown ul li a:hover{
+    background-color: #111;
+    border-radius: 10px;
+    text-decoration: underline;
+    
+    text-underline-offset: 0.5rem;
+  }
   nav li a:hover {
     background-color: #111;
     border-radius: 10px;
     text-decoration: underline;
-    transition: all 0.4s;
+    
+    text-underline-offset: 0.5rem;
   }
-
+  
   .currentPG {
     font-style: italic;
     text-decoration: underline;
@@ -154,6 +182,8 @@ nav {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    height: 100vh;
+    opacity: 0.8;
   }
   .topDIV {
     background-color: rgba(0, 0, 0, 0.75);
@@ -231,7 +261,7 @@ nav {
     background-color: #300707;
   }
   #container3{
-    background-color: #503834;
+    background-color: #40312e;
     display: flex;
     justify-content: space-evenly;
     padding: 20px;
@@ -259,13 +289,21 @@ nav {
   }
 
   .element{
-    margin: 20px;
+    margin-left: 5%;
     display: block;
-    background-color: rgb(13, 13, 13);
     color: #ffffff;
     padding: 28px;
-    width: 45%;
+    width: 30%;
     border-radius: 20px;
+    background-image: linear-gradient(to top left,rgba(0, 0, 0, 0.32),rgba(9, 9, 9, 0.32),rgba(14, 14, 14, 0.32));
+    background-color: #181717;
+    transition: all 0.4s ease-in-out;
+  }
+  .element:hover{
+    width: 30.5%;
+    padding-left: 30px;
+    height: auto;
+    background-image: linear-gradient(to top right,rgba(0, 0, 0, 0.32),rgba(9, 9, 9, 0.32),rgba(14, 14, 14, 0.32));
     
   }
 
@@ -275,7 +313,7 @@ nav {
   }
 
   .container {
-    background-color: rgb(143, 160, 255);
+    background-color: transparent;
     padding: 50px;
     margin: 30px;
     border-radius: 40px;
@@ -326,6 +364,7 @@ nav {
   footer div ul li a p:hover {s
     text-decoration: underline;
     font-size: 24px;
+    
   }
   
   footer div ul li{
@@ -349,11 +388,11 @@ nav {
   }
   .contain {
     opacity: 0;
-    transform: translateY(20px); /* Optional: Slide up animation */
+    transform: translateY(30px); /* Optional: Slide up animation */
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .contain.animate {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }

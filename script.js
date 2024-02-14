@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
         for (var i = 0; i < elements.length; i++) {
             var element = elements[i];
             var positionFromTop = element.getBoundingClientRect().top;
-            if (positionFromTop - windowHeight <= 0) {
+            if (positionFromTop - windowHeight <= 1) {
                 element.classList.add('animate');
             }
         }
