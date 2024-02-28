@@ -22,7 +22,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            
+            paadding-right: 7vw;
 
 
         }
@@ -134,8 +134,9 @@
 </div>
         <div class="contain"  style="background-color: #000;">
         <div class="form-container" style="background-color: #000;">
-            <form action="register.php"  style="background-color: #000000;">
-                <fieldset style="background-color: #000; padding: 4vw; border-radius: 20px;">
+            <form action="registerr.php" method="post" style="background-color: #000000;padding: 4vw; border-radius: 20px;">
+
+                
                     <legend>Contact Us</legend>
     
                     <label for="firstname">Firstname:</label>
@@ -146,7 +147,7 @@
     
                     <label for="age">Age:</label>
                         <select id="age" name="age">
-                            <option value="">Select Age</option>
+                            <option value="" >Select Age</option>
                             <option value="1"> 5 </option>
                             <option value="2">5 - 10</option>
                             <option value="3">11 - 15</option>
@@ -165,9 +166,9 @@
     
                     <label for="gender">Gender:</label>
                     <br>
-                    <input type="radio" name="gender" value="Male"/> Male
-                    <input type="radio" name="gender" value="Female"/> Female
-                    <input type="radio" name="gender" value="Others"/> Others
+                    <input type="radio" name="gender" value="m"/> Male
+                    <input type="radio" name="gender" value="f"/> Female
+                    <input type="radio" name="gender" value="o"/> Others
     
                     <label for="role">Role:</label> 
                     <br> 
@@ -178,9 +179,9 @@
     
                     <label for="faculty">Faculty:</label>
                     <br>
-                    <input type="radio" name="faculty" value="Management"/> Management
-                    <input type="radio" name="faculty" value="Science"/> Science
-                    <input type="radio" name="faculty" value="Staff"/> Staff
+                    <input type="radio" name="faculty" value="mangt"/> Management
+                    <input type="radio" name="faculty" value="sci"/> Science
+                    <input type="radio" name="faculty" value="staff"/> Staff
     
                     <label for="phone">Phone:</label>
                     <br>
@@ -209,8 +210,8 @@
                     <p style="font-size: 15px; float: left; margin-right: 49%; color: #000;">&#9888; please check your form before submiting</p>
 
                     <br>
-                    <input type="button" id="submit-btn" value="Submit" >
-                </fieldset>
+                    <input type="button" name="btn" id="submit-btn" value="Submit" >
+                
             </form>
         </div>
     
@@ -223,9 +224,10 @@ form {
   background-color: rgb(0, 0, 0); /* Semi-transparent white background */
   padding: 30px;
   border-radius: 10px;
+  border: solid 2px white;
   color: rgb(255, 255, 255);
-  width: 40vw;
-  margin-left: 16vw;
+  width: 50vw;
+  margin-left: 12vw;
 }
 
 input{
@@ -292,7 +294,66 @@ form input[type="submit"]:hover {
 
     </style>
 
-    <script src="script.js">
+    <script>
+
+
+    // If you want smooth animation while showing/hiding the dropdown, you can use JavaScript
+    document.querySelectorAll('.faculty-dropdown').forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.querySelector('.dropdown-content').style.display = 'block';
+        });
+    
+        item.addEventListener('mouseleave', function() {
+            this.querySelector('.dropdown-content').style.display = 'none';
+        });
+    });
+    
+    
+    // JavaScript for dropdown menu
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all dropdown buttons
+        var dropdowns = document.querySelectorAll('.faculty-dropdown, .more-dropdown');
+    
+        // Toggle dropdown content when clicking on dropdown button
+        dropdowns.forEach(function(dropdown) {
+            dropdown.addEventListener('click', function() {
+                this.querySelector('.dropdown-content').classList.toggle('show');
+            });
+        });
+    
+        // Close dropdowns when clicking outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.faculty-dropdown, .more-dropdown')) {
+                var dropdowns = document.querySelectorAll('.dropdown-content');
+                dropdowns.forEach(function(dropdown) {
+                    if (dropdown.classList.contains('show')) {
+                        dropdown.classList.remove('show');
+                    }
+                });
+            }
+        }
+    });
+    
+    
+   
+document.addEventListener("DOMContentLoaded", function() {
+    var elements = document.querySelectorAll('.contain');
+    var windowHeight = window.innerHeight;
+    
+    function checkPosition() {
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var positionFromTop = element.getBoundingClientRect().top;
+            if (positionFromTop - windowHeight <= 1) {
+                element.classList.add('animate');
+            }
+        }
+    }
+    
+    // Run the checkPosition function on page load and scroll
+    window.addEventListener('load', checkPosition);
+    window.addEventListener('scroll', checkPosition);
+});
 
     </script>
 
